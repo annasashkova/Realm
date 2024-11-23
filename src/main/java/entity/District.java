@@ -9,12 +9,12 @@ import java.util.Random;
 public class District {
     private ArrayList<City> cities = new ArrayList<>();
     private int square;
-    private City regionalCenter;
+    private City districtCenter;
     private String name;
 
     public District() {
         this.name = Randomazer.randString();
-        int counter = (int) (2 + Math.random() * 4);
+        int counter = (int) (1 + Math.random() * 4);
         for (int i = 0; i < counter; i++) {
             cities.add(new City());
         }
@@ -24,7 +24,7 @@ public class District {
         }
 
         Random random = new SecureRandom();
-        this.regionalCenter = cities.get(random.nextInt(cities.size()));
+        this.districtCenter = cities.get(random.nextInt(cities.size()));
     }
 
     public ArrayList<City> getCities() {
@@ -43,12 +43,12 @@ public class District {
         this.square = square;
     }
 
-    public City getRegionalCenter() {
-        return regionalCenter;
+    public City getDistrictCenter() {
+        return districtCenter;
     }
 
-    public void setRegionalCenter(City regionalCenter) {
-        this.regionalCenter = regionalCenter;
+    public void setDistrictCenter(City districtCenter) {
+        this.districtCenter = districtCenter;
     }
 
     public String getName() {
@@ -64,7 +64,7 @@ public class District {
         StringBuilder sb = new StringBuilder();
         sb.append("Область ").append(name).append(" площадью ").append(square).append(". Список городов: ").append("\n");
         for (City city : cities) {
-            sb.append(city.toString());
+            sb.append(city.toString()).append("\n");
         }
         return sb.toString();
     }

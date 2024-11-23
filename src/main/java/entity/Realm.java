@@ -13,7 +13,7 @@ public class Realm {
 
     private Realm(String name) {
         this.name = name;
-        int counter = (int) (1 + Math.random() * 3);
+        int counter = (int) (2 + Math.random() * 3);
         for (int i = 0; i < counter; i++) {
             regions.add(new Region());
         }
@@ -74,7 +74,7 @@ public class Realm {
                 .append("Содержит регионы: ");
 
         for (Region region : regions) {
-            sb.append(region.toString());
+            sb.append(region.toString()).append("\n");
         }
         return sb.toString();
     }

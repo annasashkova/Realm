@@ -12,7 +12,7 @@ public class Region {
 
     public Region() {
         this.name = Randomazer.randString();
-        int counter = (int) (2 + Math.random() * 3);
+        int counter = (int) (2 + Math.random() * 4);
         for (int i = 0; i < counter; i++) {
             districts.add(new District());
         }
@@ -51,7 +51,7 @@ public class Region {
         StringBuilder sb = new StringBuilder();
         sb.append("Регион ").append(name).append(" площадью ").append(square).append(". Cписок областей: ").append("\n");
         for (District district : districts) {
-            sb.append(district.toString());
+            sb.append(district.toString()).append("\n");
         }
         return sb.toString();
     }

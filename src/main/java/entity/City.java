@@ -46,10 +46,17 @@ public class City {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Город ").append(name).append(" площадью ").append(square);
+        return sb.toString();
+    }
+
+    public String toStringWithSitizens() {
+        StringBuilder sb = new StringBuilder();
         sb.append("Город ").append(name).append(" площадью ").append(square).append(". Cписок жителей: ").append("\n");
         for (Citizen citizen : citizens) {
             sb.append(citizen.toString()).append("\n");
         }
+        sb.append("\n");
         return sb.toString();
     }
 }
