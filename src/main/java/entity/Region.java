@@ -6,18 +6,18 @@ import java.util.ArrayList;
 
 public class Region {
 
-    private ArrayList<District> districts;
+    private ArrayList<District> districts = new ArrayList<>();
     private int square;
     private String name;
 
     public Region() {
         this.name = Randomazer.randString();
-        int counter = (int)(1+ Math.random()*2);
-        for(int i = 0; i<=counter; i++) {
-            districts.set(i, new District());
+        int counter = (int) (2 + Math.random() * 3);
+        for (int i = 0; i < counter; i++) {
+            districts.add(new District());
         }
 
-        for(District district : districts){
+        for (District district : districts) {
             this.square = this.square + district.getSquare();
         }
     }
@@ -50,7 +50,7 @@ public class Region {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Регион ").append(name).append(" площадью ").append(square).append(". Cписок областей: ").append("\n");
-        for(District district : districts){
+        for (District district : districts) {
             sb.append(district.toString());
         }
         return sb.toString();

@@ -11,7 +11,7 @@ public class Citizen {
 
     private static Long idCounter = 1L;
 
-    public Citizen(){
+    public Citizen() {
         this.id = idCounter++;
         this.name = Randomazer.randString();
         this.lastName = Randomazer.randString();
@@ -19,7 +19,7 @@ public class Citizen {
         this.realm = getRealm();
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

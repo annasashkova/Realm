@@ -6,19 +6,19 @@ import java.util.Random;
 
 public class Realm {
 
-    private ArrayList<Region> regions;
+    private ArrayList<Region> regions = new ArrayList<>();
     private City capital;
     private int square;
     private String name;
 
-    private Realm(String name){
+    private Realm(String name) {
         this.name = name;
-        int counter = (int)(1+ Math.random()*2);
-        for(int i = 0; i<=counter; i++) {
-            regions.set(i, new Region());
+        int counter = (int) (1 + Math.random() * 3);
+        for (int i = 0; i < counter; i++) {
+            regions.add(new Region());
         }
 
-        for(Region region : regions){
+        for (Region region : regions) {
             this.square = this.square + region.getSquare();
         }
 
@@ -30,7 +30,7 @@ public class Realm {
 
     private static final Realm INSTANCE = new Realm("Великое");
 
-    public static Realm getInstance(){
+    public static Realm getInstance() {
         return INSTANCE;
     }
 
@@ -73,7 +73,7 @@ public class Realm {
                 .append(capital.toString()).append("\n")
                 .append("Содержит регионы: ");
 
-        for(Region region : regions){
+        for (Region region : regions) {
             sb.append(region.toString());
         }
         return sb.toString();

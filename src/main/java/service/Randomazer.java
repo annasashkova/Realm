@@ -9,7 +9,7 @@ public class Randomazer {
     public static String randString(){
         int counter = (int) (5+Math.random()*6);
         char[] string = new char[counter];
-        for (int i = 0; i<= counter; i++){
+        for (int i = 0; i< counter; i++){
             string[i] = (char) (97 + (Math.random() * 26));
         }
         String str = new String(string);
