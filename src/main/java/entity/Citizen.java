@@ -1,23 +1,54 @@
 package entity;
 
+import service.Randomazer;
+
 public class Citizen {
-    private int id;
+    private Long id;
     private String name;
     private String lastName;
-    private int age;
-    private Realm realm;
+    private Integer age;
+    private final Realm realm;
 
-    public static int counter;
+    private static Long idCounter = 1L;
 
     public Citizen(){
-
+        this.id = idCounter++;
+        this.name = Randomazer.randString();
+        this.lastName = Randomazer.randString();
+        this.age = Randomazer.randAge();
+        this.realm = getRealm();
     }
 
-    public Citizen(int id, String name, String lastName, int age, Realm realm){
-        this.id = id;
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-        this.realm = realm;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    private Realm getRealm() {
+        return Realm.getInstance();
+    }
+
 }
