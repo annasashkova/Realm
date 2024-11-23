@@ -1,21 +1,68 @@
 package entity;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Realm {
 
     private ArrayList<Region> regions;
     private City capital;
+    private int square;
+    private String name;
 
-    private static final Realm INSTANCE = new Realm();
+    private Realm(String name){
+        this.name = name;
+        int counter = (int)(1+ Math.random()*2);
+        for(int i = 0; i<=counter; i++) {
+            regions.set(i, new Region());
+        }
 
-    private Realm(){
+        for(Region region : regions){
+            this.square = this.square + region.getSquare();
+        }
 
+        Random random = new SecureRandom();
+        ArrayList<District> districts = regions.get(random.nextInt(regions.size())).getDistricts();
+        ArrayList<City> cities = districts.get(random.nextInt(districts.size())).getCities();
+        this.capital = cities.get(random.nextInt(cities.size()));
     }
+
+    private static final Realm INSTANCE = new Realm("GreatRealm");
 
     public static Realm getInstance(){
         return INSTANCE;
     }
 
+    public ArrayList<Region> getRegions() {
+        return regions;
+    }
 
+    public void setRegions(ArrayList<Region> regions) {
+        this.regions = regions;
+    }
+
+    public City getCapital() {
+        return capital;
+    }
+
+    public void setCapital(City capital) {
+        this.capital = capital;
+    }
+
+    public int getSquare() {
+        return square;
+    }
+
+    public void setSquare(int square) {
+        this.square = square;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
