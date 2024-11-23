@@ -58,4 +58,14 @@ public class District {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Область ").append(name).append(" площадью ").append(square).append(". Список городов: ").append("\n");
+        for(City city : cities){
+            sb.append(city.toString());
+        }
+        return sb.toString();
+    }
 }

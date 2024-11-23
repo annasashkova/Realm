@@ -28,7 +28,7 @@ public class Realm {
         this.capital = cities.get(random.nextInt(cities.size()));
     }
 
-    private static final Realm INSTANCE = new Realm("GreatRealm");
+    private static final Realm INSTANCE = new Realm("Великое");
 
     public static Realm getInstance(){
         return INSTANCE;
@@ -64,5 +64,18 @@ public class Realm {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Государство ").append(name).append(" площадью ").append(square).append(". Столица: ")
+                .append(capital.toString()).append("\n")
+                .append("Содержит регионы: ");
+
+        for(Region region : regions){
+            sb.append(region.toString());
+        }
+        return sb.toString();
     }
 }

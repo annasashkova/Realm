@@ -45,4 +45,14 @@ public class Region {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Регион ").append(name).append(" площадью ").append(square).append(". Cписок областей: ").append("\n");
+        for(District district : districts){
+            sb.append(district.toString());
+        }
+        return sb.toString();
+    }
 }

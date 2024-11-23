@@ -51,4 +51,11 @@ public class Citizen {
         return Realm.getInstance();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Горожанин ").append(name).append(" ").append(lastName).append(" возрастом ")
+                .append(age).append(" и id ").append(id);
+        return sb.toString();
+    }
 }

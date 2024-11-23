@@ -14,7 +14,7 @@ public class City {
     public City() {
         this.name = Randomazer.randString();
         this.square = Randomazer.randSquare();
-        int counter = (int)(100+ Math.random()*900);
+        int counter = (int)(10+ Math.random()*40);
         for(int i = 0; i<=counter; i++){
             citizens.set(i, new Citizen());
         }
@@ -42,5 +42,15 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Город ").append(name).append(" площадью ").append(square).append(". Cписок жителей: ").append("\n");
+        for(Citizen citizen : citizens){
+            sb.append(citizen.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }
