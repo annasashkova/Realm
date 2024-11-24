@@ -7,6 +7,35 @@ import java.util.Scanner;
 
 public class RealmManager {
 
+    public static void selectAction() {
+        Scanner sc = new Scanner(System.in);
+        String  choice = "";
+        do {
+            System.out.println("Выберите операцию! Вывести на консоль: ");
+            System.out.println("1.Столицу Государства");
+            System.out.println("2.Количество областей в Государстве");
+            System.out.println("3.Площадь Государства");
+            System.out.println("4.Областные центры Государтсва");
+            System.out.println("5.Средний возраст жителей Государства");
+            System.out.println("6.Спиков жителей с именами на букву n");
+            System.out.println("7.Спиок жителей с количество букв в имени равном n");
+            System.out.println("Введите номер нужного действия и нажмите <ENTER>:\n" +
+                    "(Для выхода из программы просто нажмите клавишу <ENTER>)");
+            choice = sc.nextLine();
+            switch (choice) {
+                case "1": displaysCapital(); break;
+                case "2": displaysDistrictsNumber(); break;
+                case "3": displaysRealmSquare(); break;
+                case "4": displeysDistrictCenters(); break;
+                case "5": displaysAverageAgeCitizens(); break;
+                case "6": displaysCitizensNamesStartLetter(); break;
+                case "7": displaysCitizensNameLettersNumber(); break;
+                default: System.out.println("Выберите один из пунктов меню, или нажмите <ENTER> " +
+                        "для выхода из программы\n"); break;
+            }
+        } while(!choice.isEmpty());
+    }
+
     public static void displaysCapital() {
         System.out.println("Столица Государства: " + "\n" + Realm.getInstance().getCapital().toStringWithSitizens());
     }
