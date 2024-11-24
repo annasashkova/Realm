@@ -5,7 +5,6 @@ import service.Randomazer;
 import java.util.ArrayList;
 
 public class Region {
-
     private ArrayList<District> districts = new ArrayList<>();
     private int square;
     private String name;
@@ -16,7 +15,6 @@ public class Region {
         for (int i = 0; i < counter; i++) {
             districts.add(new District());
         }
-
         for (District district : districts) {
             this.square = this.square + district.getSquare();
         }

@@ -18,11 +18,9 @@ public class District {
         for (int i = 0; i < counter; i++) {
             cities.add(new City());
         }
-
         for (City city : cities) {
             this.square = this.square + city.getSquare();
         }
-
         Random random = new SecureRandom();
         this.districtCenter = cities.get(random.nextInt(cities.size()));
     }

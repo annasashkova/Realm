@@ -8,7 +8,6 @@ public class Citizen {
     private String lastName;
     private Integer age;
     private final Realm realm;
-
     private static Long idCounter = 1L;
 
     public Citizen() {

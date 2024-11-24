@@ -5,7 +5,6 @@ import service.Randomazer;
 import java.util.ArrayList;
 
 public class City {
-
     private ArrayList<Citizen> citizens = new ArrayList<>();
     private int square;
     private String name;
@@ -50,7 +49,7 @@ public class City {
         return sb.toString();
     }
 
-    public String toStringWithSitizens() {
+    public String toStringWithCitizens() {
         StringBuilder sb = new StringBuilder();
         sb.append("Город ").append(name).append(" площадью ").append(square).append(". Cписок жителей: ").append("\n");
         for (Citizen citizen : citizens) {

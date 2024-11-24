@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Realm {
-
     private ArrayList<Region> regions = new ArrayList<>();
     private City capital;
     private int square;
     private String name;
+    private static final Realm INSTANCE = new Realm("Великое");
 
     private Realm(String name) {
         this.name = name;
@@ -17,18 +17,14 @@ public class Realm {
         for (int i = 0; i < counter; i++) {
             regions.add(new Region());
         }
-
         for (Region region : regions) {
             this.square = this.square + region.getSquare();
         }
-
         Random random = new SecureRandom();
         ArrayList<District> districts = regions.get(random.nextInt(regions.size())).getDistricts();
         ArrayList<City> cities = districts.get(random.nextInt(districts.size())).getCities();
         this.capital = cities.get(random.nextInt(cities.size()));
     }
-
-    private static final Realm INSTANCE = new Realm("Великое");
 
     public static Realm getInstance() {
         return INSTANCE;

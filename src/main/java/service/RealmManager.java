@@ -9,7 +9,7 @@ public class RealmManager {
 
     public static void selectAction() {
         Scanner sc = new Scanner(System.in);
-        String  choice = "";
+        String choice = "";
         do {
             System.out.println("Выберите операцию! Вывести на консоль: ");
             System.out.println("1.Столицу Государства");
@@ -17,27 +17,47 @@ public class RealmManager {
             System.out.println("3.Площадь Государства");
             System.out.println("4.Областные центры Государтсва");
             System.out.println("5.Средний возраст жителей Государства");
-            System.out.println("6.Спиков жителей с именами на букву n");
-            System.out.println("7.Спиок жителей с количество букв в имени равном n");
+            System.out.println("6.Список жителей с именами на букву n");
+            System.out.println("7.Список жителей с количество букв в имени равном n");
+            System.out.println("8.Общую информацию о Государстве");
             System.out.println("Введите номер нужного действия и нажмите <ENTER>:\n" +
                     "(Для выхода из программы просто нажмите клавишу <ENTER>)");
             choice = sc.nextLine();
             switch (choice) {
-                case "1": displaysCapital(); break;
-                case "2": displaysDistrictsNumber(); break;
-                case "3": displaysRealmSquare(); break;
-                case "4": displeysDistrictCenters(); break;
-                case "5": displaysAverageAgeCitizens(); break;
-                case "6": displaysCitizensNamesStartLetter(); break;
-                case "7": displaysCitizensNameLettersNumber(); break;
-                default: System.out.println("Выберите один из пунктов меню, или нажмите <ENTER> " +
-                        "для выхода из программы\n"); break;
+                case "1":
+                    displaysCapital();
+                    break;
+                case "2":
+                    displaysDistrictsNumber();
+                    break;
+                case "3":
+                    displaysRealmSquare();
+                    break;
+                case "4":
+                    displaysDistrictCenters();
+                    break;
+                case "5":
+                    displaysAverageAgeCitizens();
+                    break;
+                case "6":
+                    displaysCitizensNamesStartLetter();
+                    break;
+                case "7":
+                    displaysCitizensNameLettersNumber();
+                    break;
+                case "8":
+                    System.out.println(Realm.getInstance().toString());
+                    break;
+                default:
+                    System.out.println("Выберите один из пунктов меню, или нажмите <ENTER> " +
+                            "для выхода из программы\n");
+                    break;
             }
-        } while(!choice.isEmpty());
+        } while (!choice.isEmpty());
     }
 
     public static void displaysCapital() {
-        System.out.println("Столица Государства: " + "\n" + Realm.getInstance().getCapital().toStringWithSitizens());
+        System.out.println("Столица Государства: " + "\n" + Realm.getInstance().getCapital().toStringWithCitizens());
     }
 
     public static void displaysDistrictsNumber() {
@@ -53,7 +73,7 @@ public class RealmManager {
         System.out.println("Площадь Государства: " + Realm.getInstance().getSquare());
     }
 
-    public static void displeysDistrictCenters() {
+    public static void displaysDistrictCenters() {
         ArrayList<Region> regions = Realm.getInstance().getRegions();
         ArrayList<District> districts = new ArrayList<>();
         for (Region region : regions) {
@@ -66,7 +86,7 @@ public class RealmManager {
         StringBuilder sb = new StringBuilder();
         sb.append("Областные центры Государства: ").append("\n");
         for (City center : districtCenters) {
-            sb.append(center.toStringWithSitizens());
+            sb.append(center.toStringWithCitizens());
         }
         System.out.println(sb.toString());
     }
@@ -110,10 +130,10 @@ public class RealmManager {
         }
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите букву для выведения списка жителей, имена который на нее начинаются:  ");
-        char firstLetter = (char) (sc.nextInt());
+        String firstLetter = sc.nextLine();
         ArrayList<Citizen> citizensNameLetter = new ArrayList<>();
         for (Citizen citizen : citizens) {
-            if (firstLetter == citizen.getName().charAt(0)) {
+            if (firstLetter.charAt(0) == citizen.getName().charAt(0)) {
                 citizensNameLetter.add(citizen);
             }
         }
