@@ -1,12 +1,10 @@
 package service;
 
-import entity.City;
-import entity.District;
-import entity.Realm;
-import entity.Region;
+import entity.*;
 
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class RealmManager {
 
@@ -43,5 +41,59 @@ public class RealmManager {
             sb.append(center.toStringWithSitizens());
         }
         System.out.println(sb.toString());
+    }
+
+    public static void displaysAverageAgeCitizens(){
+        ArrayList<Region> regions = Realm.getInstance().getRegions();
+        ArrayList <District> districts = new ArrayList<>();
+        for(Region region: regions){
+            districts.addAll(region.getDistricts());
+        }
+        ArrayList<City> cities = new ArrayList<>();
+        for(District district: districts){
+            cities.addAll(district.getCities());
+        }
+        ArrayList<Citizen> citizens = new ArrayList<>();
+        for(City city : cities){
+            citizens.addAll(city.getCitizens());
+        }
+        int ageAll = 0;
+        for(Citizen citizen : citizens){
+            ageAll = ageAll + citizen.getAge();
+        }
+
+        int averageAge = ageAll/citizens.size();
+        System.out.println("Средний возраст жителей Государства = " + averageAge);
+    }
+
+    public static void displaysCitizensNamesStartLetter(){
+        ArrayList<Region> regions = Realm.getInstance().getRegions();
+        ArrayList <District> districts = new ArrayList<>();
+        for(Region region: regions){
+            districts.addAll(region.getDistricts());
+        }
+        ArrayList<City> cities = new ArrayList<>();
+        for(District district: districts){
+            cities.addAll(district.getCities());
+        }
+        ArrayList<Citizen> citizens = new ArrayList<>();
+        for(City city : cities){
+            citizens.addAll(city.getCitizens());
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите букву для выведения списка жителей, имена который на нее начинаются:  ");
+        char firstLetter = (char) (sc.nextInt());
+        ArrayList<Citizen> citizensNameLetter = new ArrayList<>();
+        for(Citizen citizen : citizens){
+            if(firstLetter == citizen.getName().charAt(0)){
+                citizensNameLetter.add(citizen);
+            }
+        }
+        System.out.println("Список жителей с именами на букву " + firstLetter + ":" + "\n");
+        for (Citizen citizen : citizensNameLetter){
+            System.out.println(citizen.toString());
+        }
+
+
     }
 }
